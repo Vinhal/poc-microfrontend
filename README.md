@@ -9,11 +9,7 @@ custom hook to be used by other applications.
 - `app1` is a Home router application 
 - `app1` is a Dashboard router application 
 
-# Running Demo
+## Running
 
 Run `yarn start` on all projects. This will build and serve both `host`, `app1` and `app1` on ports
 3000, 3001 and 3002 respectively.
-
-- [localhost:3000](http://localhost:3000/)
-- [localhost:3001](http://localhost:3001/)
-- [localhost:3002](http://localhost:3002/)
