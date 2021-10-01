@@ -1,10 +1,12 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import UserProvider from 'host/UserProvider'
 import routes from "./routes";
 
 const App = () => (
   <div>
     <h1>App 1</h1>
+    <UserProvider>
     <React.Suspense fallback="Loading Name">
       <BrowserRouter>
         <Switch>
@@ -13,8 +15,8 @@ const App = () => (
           ))}
         </Switch>
       </BrowserRouter>
-      {/* <Welcome /> */}
     </React.Suspense>
+    </UserProvider>
   </div>
 );
 

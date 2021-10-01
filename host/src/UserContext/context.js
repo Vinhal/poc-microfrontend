@@ -1,7 +1,16 @@
-import { createContext } from 'react'
+import { createContext, useContext } from "react";
 
-const context = createContext()
+const context = createContext();
 
-context.displayName = "UserContext"
+context.displayName = "UserContext";
 
-export default context
+function useUserContext() {
+  const userContext = useContext(context);
+
+  console.log("useUserContext", userContext);
+
+  return userContext;
+}
+
+export { useUserContext };
+export default context;

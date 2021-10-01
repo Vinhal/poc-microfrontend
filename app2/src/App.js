@@ -1,23 +1,25 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import UserProvider from "./UserContext/Provider";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import routes from "./routes";
-import Welcome from './Welcome'
 
+import UserProvider from "host/UserProvider";
+
+const NotFoundScreen = () => <div>NOT FOUND </div>
 
 const App = () => (
   <div>
-    <h1>Host Provider</h1>
+    <h1>App 2</h1>
     <UserProvider>
-      <Welcome />
       <React.Suspense fallback="Loading Name">
         <BrowserRouter>
           <Switch>
             {routes.map((route, index) => (
-              <Route key={index} {...route} />
+              <Route exact key={index} {...route} />
             ))}
+            <Route component={NotFoundScreen} />
           </Switch>
         </BrowserRouter>
+        {/* <Welcome /> */}
       </React.Suspense>
     </UserProvider>
   </div>

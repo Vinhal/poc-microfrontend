@@ -1,4 +1,4 @@
-const Webpack = require("webpack");
+const Webpack = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = Webpack.container.ModuleFederationPlugin;
 
@@ -12,15 +12,15 @@ module.exports = {
       directory: path.join(__dirname, "build"),
     },
     historyApiFallback: true,
-    port: 3000,
+    port: 3002,
   },
   output: {
-    publicPath: "auto",
+    publicPath: 'auto'
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
@@ -30,19 +30,17 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"],
+    extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "host",
-      filename: "remoteEntry.js",
+      name: "app2",
+      filename: 'remoteEntry.js',
       exposes: {
-        "./UserProvider": "./src/UserContext/Provider",
-        "./UserContext": "./src/UserContext/context",
+        "./routes": "./src/app2routes",
       },
       remotes: {
-        app1: "app1@http://localhost:3001/remoteEntry.js",
-        app2: "app2@http://localhost:3002/remoteEntry.js",
+        host: "host@http://localhost:3000/remoteEntry.js",
       },
       shared: {
         react: {
