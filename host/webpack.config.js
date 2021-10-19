@@ -16,6 +16,7 @@ module.exports = {
   },
   output: {
     publicPath: "auto",
+    chunkFilename: '[name]-[contenthash].js',
   },
   module: {
     rules: [
@@ -54,6 +55,7 @@ module.exports = {
         "react-router-dom": {
           singleton: true,
         },
+        "./src/UserContext/context": {},
       },
     }),
     new HtmlWebpackPlugin({
